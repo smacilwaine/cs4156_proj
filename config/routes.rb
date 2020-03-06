@@ -30,10 +30,15 @@ Rails.application.routes.draw do
 
   get 'join', to: 'lectures#join'
 
+  post 'validate_join', to: 'lectures#validate_join'
+
   #get 'teach/:lec_id', to: 'lectures#teach'
 
   get 'leave/:lec_id', to: 'lectures#leave'
 
   get 'terminate/:lec_id', to: 'lectures#terminate'
+  
+  get 'no_access', to: 'lectures#no_access'
+
   #root 'welcome#index'
 end

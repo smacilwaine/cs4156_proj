@@ -1,1 +1,8 @@
-<h1>Join Lecture Page</h1>
+<h1>Join Lecture</h1>
+
+<%= form_with scope: :lecture, url: url_for(:action => 'validate_join')  do |f| %>
+    <%= f.label :lec_id%><br>
+    <%= f.text_field :lec_id%><br>
+
+    <%= f.submit "Start" %>
+<%end%>

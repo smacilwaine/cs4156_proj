@@ -16,9 +16,9 @@ class SessionsController < ApplicationController
     #end
     if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect_to '/dashboard'
+        redirect_to dashboard_path
     else
-        redirect_to '/login' 
+        redirect_to login_path 
     end
   end
 
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     
   def logout
     reset_session
-    redirect_to '/welcome'
+    redirect_to welcome_path
   end
 
 end

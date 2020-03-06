@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     #end
     if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect_to '/authorized'
+        redirect_to '/dashboard'
     else
         redirect_to '/login' 
     end

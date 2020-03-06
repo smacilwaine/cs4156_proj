@@ -9,6 +9,9 @@ class UserController < ApplicationController
   def create
     @user = User.create(params.require(:user).permit(:username, :email, :password, :role))
     session[:user_id] = @user.id
-    redirect_to '/welcome'
+    redirect_to '/dashboard'
+  end
+
+  def dashboard
   end
 end

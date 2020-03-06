@@ -9,6 +9,15 @@ class LecturesController < ApplicationController
     @lecture.lec_id = @@current_lec_id
     @lecture.active = true
     @@current_lec_id+=1
+    @lecture.save
+    ####debugging_code#####
+    #selected_lecture = Lecture.find_by(lec_id: @lecture.lec_id)
+    #if selected_lecture == nil
+    #    puts "selected lecture is nil"
+    #else
+    #    puts "selected lecture has id", selected_lecture.lec_id
+    #end
+    ######################
     redirect_to :action => "view", :lec_id => @lecture.lec_id #needs to be changed. use randomly generated lec_id. go to teach first
   end
 
@@ -16,6 +25,17 @@ class LecturesController < ApplicationController
   end
 
   def join
+  end
+
+  def validate_join
+    lec_id = params[:lecture][:lec_id]
+    selected_lecture = Lecture.find_by(lec_id: lec_id)
+    
+    if (selected_lecture == nil) or !(selected_lecture.active) or (selected_lecture.student != current_user.username)
+        redirect_to no_access_path
+    else    
+        redirect_to :action => "view", :lec_id => lec_id  
+    end
   end
     
   def teach
@@ -25,6 +45,9 @@ class LecturesController < ApplicationController
   end
 
   def terminate
+  end
+
+  def no_access
   end
 
   private

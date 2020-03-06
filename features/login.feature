@@ -1,37 +1,20 @@
 Feature: Login
 
-    As a logged in user
-    So I can use the system
-    I want to log in successfully
+Background:
+    Given a user "rohit" with password "123" exists
 
 Scenario: Successful login
 
     Given I am on the login page
-    When I input username "Rohit"
+    When I input username "rohit"
     And I input password "123"
-    Then I should be logged in
-    And I should see "Rohit's Dashboard"
+    And I log in
+    Then I should be on dashboard
 
-Scenario: Unsuccessful login (missing username)
-
-    Given I am on the login page
-    When I input username ""
-    And I input password "123"
-    Then I should not be logged in
-    And I should not see "Rohit's Dashboard"
-
-Scenario: Unsuccessful login (missing password)
+Scenario: Wrong password
 
     Given I am on the login page
-    When I input username "Rohit"
-    And I input password ""
-    Then I should not be logged in
-    And I should not see "Rohit's Dashboard"
-
-Scenario: Unsuccessful login (incorrect password)
-
-    Given I am on the login page
-    When I input username "Rohit"
-    And I input password "12"
-    Then I should not be logged in
-    And I should not see "Rohit's Dashboard"
+    When I input username "rohit"
+    And I input password "1234"
+    And I log in
+    Then I should be on the login page 

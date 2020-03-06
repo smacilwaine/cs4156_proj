@@ -1,0 +1,5 @@
+<h1> <%= current_user.username %> you are seeing this because you are logged in </h1>
+
+<%= button_to "Home", '/welcome', method: :get%>
+<%= button_to "Logout", '/logout', method: :post%>
+

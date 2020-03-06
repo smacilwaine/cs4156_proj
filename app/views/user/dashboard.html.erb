@@ -1,0 +1,17 @@
+<h1> <%= current_user.username %>'s Dashboard </h1>
+
+<% if is_student? %>
+    <h1>Student Mode</h1> 
+    <%= button_to "Join Lecture", "/join", method: :get%>
+<%end%>
+
+<% if is_instructor? %>
+    <h1>Instructor Mode</h1>
+    <br>
+    <%= button_to "Start Lecture", "/newlecture", method: :get%>
+<%end%>
+
+
+<%= button_to "Home", '/welcome', method: :get%>
+<%= button_to "Logout", '/logout', method: :post%>
+

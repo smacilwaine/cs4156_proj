@@ -1,0 +1,8 @@
+<h1>Start Lecture</h1>
+
+<%= form_with scope: :lecture, url: lectures_path, local: true do |f| %>
+    <%= f.label :student%><br>
+    <%= f.text_field :student%><br>
+
+    <%= f.submit %>
+<%end%>

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   get 'join', to: 'lectures#join'
 
-  get 'teach/:lec_id', to: 'lectures#teach'
+  #get 'teach/:lec_id', to: 'lectures#teach'
 
   get 'leave/:lec_id', to: 'lectures#leave'
 

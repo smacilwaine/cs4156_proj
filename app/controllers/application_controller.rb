@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
     before_action :authorized
     helper_method :current_user
     helper_method :logged_in?
+    helper_method :is_student?
+    helper_method :is_instructor?
     
     def current_user
         User.find_by(id: session[:user_id])
@@ -20,4 +22,13 @@ class ApplicationController < ActionController::Base
     def authorized
         redirect_to '/welcome' unless logged_in?
     end
+
+    def is_student?
+        return current_user.role == "Student"
+    end
+
+    def is_instructor?
+        return current_user.role == "Instructor"
+    end
+
 end

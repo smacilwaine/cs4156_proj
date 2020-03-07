@@ -3,7 +3,7 @@ require 'cgi'
 require 'capybara/rspec'
 
 Given /a user "(.*)" with password "(.*)" exists/ do |user, pass|
-	@credentials = { :username => user, :password => pass }
+	@user = User.create(username: user, password: pass)
 end
 
 Given /I am on the login page/ do 

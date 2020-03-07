@@ -13,7 +13,6 @@ end
 
 When /^I input username (.*)/ do |username|
 	fill_in('username', with: username)
-    save_and_open_page
 end
 
 When /^I input password (.*)/ do |password|

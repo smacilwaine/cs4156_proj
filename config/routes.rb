@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   get 'leave/:lec_id', to: 'lectures#leave'
 
-  get 'terminate/:lec_id', to: 'lectures#terminate'
+  post 'terminate/:lec_id', to: 'lectures#terminate'
   
   get 'no_access', to: 'lectures#no_access'
 

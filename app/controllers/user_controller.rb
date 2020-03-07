@@ -8,7 +8,7 @@ class UserController < ApplicationController
 
   def create
     @user = User.new(params.require(:user).permit(:username, :email, :password, :role))
-    if @user.username.length < 5 || @user.email.length == 0 || @user.password.length < 5
+    if !@user.username || @user.username.length < 5 || !@user.email.length || !@user.password || @user.password.length < 5
       puts "invalid data!\n\n\n"
       redirect_to new_user_path
     else

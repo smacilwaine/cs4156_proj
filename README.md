@@ -26,7 +26,9 @@ Things you may want to cover:
 =======
 # cs4156_proj
 
-Osama Khurshid
-Rohit Lunavara
-Samantha MacIlwaine
+# RUN CUCUMBER WITH --guess FLAG PLEASE
+
+Osama Khurshid (ok2291)
+Rohit Lunavara (rll2181)
+Samantha MacIlwaine (srm2197)
 >>>>>>> a7d77812b46da2e545371ff5d246e132b86d7a40

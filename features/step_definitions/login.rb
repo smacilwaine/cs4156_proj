@@ -16,7 +16,7 @@ When /^I input username (.*)/ do |username|
 end
 
 When /^I input password (.*)/ do |password|
-	fill_in('password', with: username)
+	fill_in('password', with: password)
 end
 
 When /^I log in/ do

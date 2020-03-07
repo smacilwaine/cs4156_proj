@@ -13,7 +13,8 @@ Scenario: Successful signup (Student)
     And I input role on signup "Student"
     And I click on "Save User" in signup
     Then I should be signed up
-    And I should see "Test's Dashboard"
+    #And I should see "Test's Dashboard"
+    And I should be on dashboard
 
 Scenario: Successful signup (Instructor)
 

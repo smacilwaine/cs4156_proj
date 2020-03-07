@@ -6,19 +6,13 @@ class UserController < ApplicationController
     @user = User.new
   end
 
-  def validate
-    if @user.username.length < 5 || @user.password.length < 5 || URI::MailTo::EMAIL_REGEXP.match(@user.email) || @user.email.length < 1 || !@user.role
-      return false
-    else
-      return true
-    end
-  end
-
   def create
     @user = User.new(params.require(:user).permit(:username, :email, :password, :role))
-    if @user.validate
+    if @user.username.length < 5 || @user.email.length == 0 || @user.password.length < 5
+      puts "invalid data!\n\n\n"
       redirect_to new_user_path
     else
+      puts "valid! user created!\n\n\n"
       @user.save
       session[:user_id] = @user.id
       redirect_to dashboard_path

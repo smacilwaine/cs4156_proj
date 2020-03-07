@@ -45,6 +45,15 @@ class LecturesController < ApplicationController
   end
 
   def terminate
+    lec_id = params[:lec_id]
+    selected_lecture = Lecture.find_by(lec_id: lec_id)
+    #puts "lec_id", lec_id
+    #if selected_lecture == nil
+    #    "selected_lecture is nil"
+    #end
+    selected_lecture.active = false
+    selected_lecture.save
+    redirect_to dashboard_path
   end
 
   def no_access

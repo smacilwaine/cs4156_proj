@@ -13,3 +13,100 @@
  *= require_tree .
  *= require_self
  */
+
+.welcome{
+	color: white;
+	font-size: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0px;
+}
+
+.greeting {
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	font-size: 70px;
+	margin-top: 1px;
+
+}
+
+.welcome_div {
+	width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    height: 500px;
+    background-color: #D9FCFC;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial;
+}
+
+form {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    height: auto;
+}
+
+.spacer30 {
+	height: 30px;
+}
+
+label {
+	color: white;
+	margin-bottom: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 20px;
+}
+
+input[type="text"], input[type="password"]{
+	color: white;
+	box-shadow: 0px 0px 0px transparent;
+    border: none;
+    outline: none;
+    text-shadow: 0px 0px 0px transparent;
+    margin-bottom: 30px;
+    height: 20px;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type="text"]:active, input[type="password"]:active {
+	box-shadow: 0px 0px 0px transparent;
+    border: none;
+    outline: none;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+input[type="submit"] {
+	background-color: #ABD5D9;
+	height: 70px;
+	width: 200px;
+	border-radius: 25px;
+	font-size: 40px;
+	color: white;
+	border: none;
+}
+
+input[type="submit"]:hover {
+	color: #E7E7E7;
+	box-shadow: 0px 0px 0px transparent;
+    border: none;
+    outline: none;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+input[type="submit"]:focus {
+	outline: none;
+	box-shadow: 0px 0px 0px transparent;
+    border: none;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+

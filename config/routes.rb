@@ -39,6 +39,10 @@ Rails.application.routes.draw do
   post 'terminate/:lec_id', to: 'lectures#terminate'
   
   get 'no_access', to: 'lectures#no_access'
+  
+
+  resources :calls, only: :create
+  mount ActionCable.server, at: '/cable'
 
   #root 'welcome#index'
 end

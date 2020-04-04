@@ -1,4 +1,6 @@
-<h1>New Lecture</h1>
+<div class="welcome_div">
+
+<h1 class="welcome">New Lecture</h1>
 
 <%= form_with scope: :lecture, url: lectures_path do |f| %>
     <%= f.label :student%><br>
@@ -6,3 +8,5 @@
 
     <%= f.submit "Start" %>
 <%end%>
+
+</div>

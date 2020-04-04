@@ -1,17 +1,24 @@
-<h1> <%= current_user.username %>'s Dashboard </h1>
+<div class="welcome_div" style="height: 700px">
+
+<h1 class="greeting" style="margin-top: 70px"> <%= current_user.username %>'s Dashboard </h1>
 
 <% if is_student? %>
-    <h1>Student Mode</h1> 
+    <h1 class="subtitle">Student Mode</h1> 
+    <span style="font-size: 30px">
     <%= button_to "Join Lecture", join_path, method: :get%>
+    </span>
 <%end%>
 
 <% if is_instructor? %>
-    <h1>Instructor Mode</h1>
+    <h1 class="subtitle">Instructor Mode</h1>
     <br>
+    <span style="font-size: 30px">
     <%= button_to "Start Lecture", newlecture_path, method: :get%>
+    </span>
 <%end%>
 
 
 <%= button_to "Home", welcome_path, method: :get%>
 <%= button_to "Logout", logout_path, method: :post%>
 
+</div>

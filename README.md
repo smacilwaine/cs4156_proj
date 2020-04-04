@@ -1,28 +1,4 @@
-<<<<<<< HEAD
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 =======
 # cs4156_proj
 
@@ -31,4 +7,20 @@ Things you may want to cover:
 Osama Khurshid (ok2291)
 Rohit Lunavara (rll2181)
 Samantha MacIlwaine (srm2197)
->>>>>>> a7d77812b46da2e545371ff5d246e132b86d7a40
+
+### Summary
+
+* Our project is an app that facilitates virtual piano lessons.
+* It connects students to instructors for secure, private video streams.
+
+### New Features Since Iteration 1:
+
+* Added CSS and other UI elements.
+* Started work on the video component using WebRTC
+* Implemented the signalling mechanism
+* Able to stream video from the user's webcam
+* The video chat feature has not been tested thoroughly and therefore not incorporated into the main branch.
+* Changed the database schema of User and Lecture model.
+* Added validation in User and Lecture model.
+* Added confirmation fields for email and password.
+* Modified signup feature to make sure it is working.

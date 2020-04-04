@@ -23,8 +23,16 @@ When /^I input email on signup "(.*)"$/ do |email|
     fill_in("Email", :with => email)
 end
 
+When /^I input email_confirmation on signup "(.*)"$/ do |email_confirmation|
+    fill_in("Email confirmation", :with => email_confirmation)
+end
+
 When /^I input password on signup "(.*)"$/ do |password|
     fill_in("Password", :with => password)
+end
+
+When /^I input password_confirmation on signup "(.*)"$/ do |password_confirmation|
+    fill_in("Password confirmation", :with => password_confirmation)
 end
 
 When /^I input role on signup "(.*)"$/ do |role|

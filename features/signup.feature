@@ -9,7 +9,9 @@ Scenario: Successful signup (Student)
     Given I am on the signup page
     When I input username on signup "Test_Student"
     And I input email on signup "test@test.com"
-    And I input password on signup "12345"
+    And I input email_confirmation on signup "test@test.com"
+    And I input password on signup "12345678"
+    And I input password_confirmation on signup "12345678"
     And I input role on signup "Student"
     And I click on "Save User" in signup
     Then I should be signed up
@@ -20,7 +22,9 @@ Scenario: Successful signup (Instructor)
     Given I am on the signup page
     When I input username on signup "Test_Instructor"
     And I input email on signup "ins@test.com"
-    And I input password on signup "12345"
+    And I input email_confirmation on signup "ins@test.com"
+    And I input password on signup "12345678"
+    And I input password_confirmation on signup "12345678"
     And I input role on signup "Instructor"
     And I click on "Save User" in signup
     Then I should be signed up

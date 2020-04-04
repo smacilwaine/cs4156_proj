@@ -10,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_051948) do
+ActiveRecord::Schema.define(version: 2020_04_03_184245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "lectures", force: :cascade do |t|
-    t.string "instructor"
-    t.string "student"
-    t.string "lec_id"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "instructor_id", null: false
+    t.bigint "student_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "username", null: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role"
-    t.string "email"
+    t.string "email", null: false
   end
 
+  add_foreign_key "lectures", "users", column: "instructor_id", on_delete: :cascade
+  add_foreign_key "lectures", "users", column: "student_id", on_delete: :cascade
 end

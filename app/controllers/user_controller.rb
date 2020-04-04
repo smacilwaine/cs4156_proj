@@ -7,18 +7,22 @@ class UserController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:username, :email, :password, :role))
-    if !@user.username || @user.username.length < 5 || !@user.email.length || !@user.password || @user.password.length < 5
-      puts "invalid data!\n\n\n"
-      redirect_to new_user_path
-    else
-      puts "valid! user created!\n\n\n"
-      @user.save
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = " User - \"#{@user.username}\" created successfully."
       session[:user_id] = @user.id
       redirect_to dashboard_path
+    else
+      flash[:warning] = "User creation unsuccessful, invalid form data."
+      redirect_to new_user_path
     end
   end
 
   def dashboard
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:username, :password, :role, :email)
   end
 end

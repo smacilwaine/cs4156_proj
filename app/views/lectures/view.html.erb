@@ -1,7 +1,9 @@
-<h1>Lecture View</h1>
+<div class="welcome_div">
+
+<h1 class="welcome">Lecture View</h1>
 
 <% if is_instructor?  %>
-    <h1>Viewing as Instructor</h1>
+    <h1 class="greeting">Viewing as Instructor</h1>
     
     <%= form_with scope: :lecture, url: url_for(:action => 'terminate', :lec_id => params[:lec_id]), method: "post" do %>
         <%= submit_tag 'End Lecture' %>
@@ -10,8 +12,9 @@
 <%end%>
 
 <% if is_student? %>
-    <h1>Viewing as Student</h1>
+    <h1 class="greeting">Viewing as Student</h1>
 <%end%>
 
 <%= button_to "Go to Dashboard", dashboard_path, method: :get%>
 
+</div>

@@ -6,15 +6,15 @@ class User < ApplicationRecord
 
     # Validation
     # Username
-    validates :username, :presence => true, :length => { :in => 8..64 }, :uniqueness => { :case_sensitive => false }
+    validates :username, :presence => true, :length => { :in => 8..64 }, :uniqueness => { :case_sensitive => true }
 
     # Password
-    validates :password, :length => { :minimum => 8 }, :if => :password_digest_changed?
-    validates :password_confirmation, :presence => true, :if => :password_digest_changed?
+    validates :password, :presence => true, :length => { :in => 8..64 }, :if => :password_digest_changed?, :confirmation => true
+    validates :password_confirmation, :presence => true
 
     # Role
     roles = ['Student', 'Instructor', 'Teaching Assistant']
-    validates :role, :inclusion => roles
+    validates :role, :presence => true, :inclusion => roles
 
     # Email
     validates :email, :presence => true, :format => { :with => URI::MailTo::EMAIL_REGEXP }, :uniqueness => { :case_sensitive => false }, :confirmation => { :case_sensitive => false }

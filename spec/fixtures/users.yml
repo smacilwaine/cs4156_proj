@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+instructor_one:
+  username: Instructor_One
+  password_digest: instructor123
+  role: Instructor
+  email: instructor_one@ins.com
+
+instructor_two:
+  username: Instructor_Two
+  password_digest: instructor123
+  role: Instructor
+  email: instructor_two@ins.com
+
+student_one:
+  username: Student_One
+  password_digest: instructor123
+  role: Student
+  email: student_one@gmail.com
+
+student_two:
+  username: Student_Two
+  password_digest: instructor123
+  role: Student
+  email: student_two@gmail.com

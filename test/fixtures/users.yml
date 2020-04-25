@@ -1,9 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  password_digest: MyString
+instructor_one:
+  username: Instructor_One
+  password: instructor123
+  password_confirmation: instructor123
+  role: Instructor
+  email: instructor_one@ins.com
+  email_confirmation: instructor_one@ins.com
 
-two:
-  username: MyString
-  password_digest: MyString
+instructor_two:
+  username: Instructor_Two
+  password: instructor123
+  password_confirmation: instructor123
+  role: Instructor
+  email: instructor_two@ins.com
+  email_confirmation: instructor_two@ins.com
+
+student_one:
+  username: Student_One
+  password: instructor123
+  password_confirmation: instructor123
+  role: Student
+  email: student_one@gmail.com
+  email_confirmation: student_one@gmail.com
+
+student_two:
+  username: Student_Two
+  password: instructor123
+  password_confirmation: instructor123
+  role: Student
+  email: student_two@gmail.com
+  email_confirmation: student_two@gmail.com

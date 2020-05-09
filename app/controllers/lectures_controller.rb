@@ -53,7 +53,7 @@ class LecturesController < ApplicationController
     #end
     selected_lecture.active = false
     selected_lecture.save
-    redirect_to dashboard_path
+    redirect_to user_index_path
   end
 
   def no_access

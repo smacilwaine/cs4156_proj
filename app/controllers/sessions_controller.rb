@@ -1,42 +1,27 @@
 class SessionsController < ApplicationController
   
-  skip_before_action :authorized, only: [:new, :create, :welcome]
+  skip_before_action :authorized, only: [:new, :create, :index]
   
+  def index
+  end
+
   def new
   end
 
   def create
     @user = User.find_by(username: params[:username])
 
-    #if @user && @user.authenticate(params[:password])
-    #if @user
-    #    puts @user.password_digest, "user.password_digest"
-    #    puts params[:password], "params password"
-    #    puts params[:password_digest], "params passowrd_digest"
-    #end
-    #STDOUT.puts "user is nil", @user == nil
-
-
     if @user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect_to dashboard_path
+      session[:user_id] = @user.id
+      redirect_to user_index_path
     else
-        redirect_to login_path
+      redirect_to new_session_path
     end
   end
 
-  def login
-  end
-
-  def welcome
-  end
-  
-  def page_requires_login
-  end  
-    
-  def logout
+  def destroy
     reset_session
-    redirect_to welcome_path
+    redirect_to root_path
   end
 
 end

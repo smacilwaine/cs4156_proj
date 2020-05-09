@@ -4,9 +4,9 @@
 
 <% if logged_in? %>
     <h1 class="greeting"><%= current_user.username %></h1>
-<%end%>
+<% end %>
 
-<%= button_to "Login", login_path, method: :get%>
-<%= button_to "Sign Up", new_user_path, method: :get%>
+<%= button_to "Login", new_session_path, method: :get %>
+<%= button_to "Sign Up", new_user_path, method: :get %>
 
 </div>

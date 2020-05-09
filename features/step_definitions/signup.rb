@@ -44,7 +44,7 @@ When /^I click on "(.*)" in signup$/ do |signup_button|
 end
 
 Then /^I should be signed up$/ do
-    expect(page).to have_current_path(dashboard_path)
+    expect(page).to have_current_path(user_index_path)
 end
 
 Then /^I should see "(.*)"$/ do |text|

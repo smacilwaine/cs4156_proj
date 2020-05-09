@@ -9,20 +9,20 @@ class UserController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = " User - \"#{@user.username}\" created successfully."
+      flash[:notice] = "User - \"#{@user.username}\" created successfully."
       session[:user_id] = @user.id
-      redirect_to dashboard_path
+      redirect_to user_index_path
     else
       flash[:warning] = "User creation unsuccessful, invalid form data."
       redirect_to new_user_path
     end
   end
 
-  def dashboard
+  def index
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :role, :email, :email_confirmation, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :role, :email, :email_confirmation)
   end
 end

@@ -4,11 +4,10 @@ require 'capybara/rspec'
 
 Given /a user "(.*)" with password "(.*)" exists/ do |user, pass|
 	user1 = User.create(username: user, password: pass)
-	user1.save
 end
 
 Given /I am on the login page/ do 
-	visit(login_path)
+	visit(new_session_path)
 end
 
 When /^I input username (.*)/ do |username|
@@ -24,10 +23,10 @@ When /^I log in/ do
 end
 
 Then /^I should be on dashboard/ do 
-	current_path.should == dashboard_path
+	current_path.should == user_index_path
 end
 		
 Then /^I should be on the login page/ do 
-	current_path.should == login_path
+	current_path.should == new_session_path
 end
 

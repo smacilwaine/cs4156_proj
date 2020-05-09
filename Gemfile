@@ -65,6 +65,9 @@ group :test do
   gem 'rspec-rails'
   # Factory
   gem 'factory_bot_rails'
+  # Metrics
+  gem 'reek'
+  gem 'flog'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

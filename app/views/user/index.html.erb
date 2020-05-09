@@ -13,12 +13,12 @@
     <h1 class="subtitle">Instructor Mode</h1>
     <br>
     <span style="font-size: 30px">
-    <%= button_to "Start Lecture", newlecture_path, method: :get%>
+    <%= button_to "Start Lecture", new_lecture_path, method: :get%>
     </span>
 <%end%>
 
 
-<%= button_to "Home", welcome_path, method: :get%>
-<%= button_to "Logout", logout_path, method: :post%>
+<%= button_to "Home", root_path, method: :get%>
+<%= button_to "Logout", session_path, method: :post%>
 
 </div>

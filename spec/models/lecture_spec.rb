@@ -6,32 +6,53 @@ require 'rails_helper'
 # E.g. :instructor_id => 1, :student_id => 1
 RSpec.describe Lecture, :type => :model do
     fixtures :users
+    before :each do
+        @ins_1 = users(:instructor_one)
+        @ins_2 = users(:instructor_two)
+        @st_1 = users(:student_one)
+        @st_2 = users(:student_two)
+    end
     context "When testing the association between 'User' and 'Lecture'" do
-        before :each do
-            @ins_1 = users(:instructor_one)
-            @ins_2 = users(:instructor_two)
-            @st_1 = users(:student_one)
-            @st_2 = users(:student_two)
-        end
+        
 
-        def valid_lecture? lecture
-            expect( lecture.valid? ).to eq true
-            expect( lecture.save ).to eq true
+        # def add_user_records
+        #     users = [@ins_1, @ins_2, @st_1, @st_2]
+        #     users.each do
+        #         |user|
+        #         user = User.new(:username => user[:username], :password => user[:password_digest], :password_confirmation => user[:password_digest], :role => user[:role], :email => user[:email], :email_confirmation => user[:email])
+        #         expect( user.valid? ).to eq false
+        #         user.errors.each do
+        #             |k, v|
+        #             puts k, v
+        #         end
+
+        #         expect( user.errors ).to include "nadu"
+        #     end
+        # end
+
+        def valid_lecture? lecture, outcome
+            expect( lecture.valid? ).to eq outcome
+            if outcome 
+                expect( lecture.errors.messages ).to be_empty
+            else
+                expect( lecture.errors.messages ).not_to be_empty
+            end
+            expect( lecture.save ).to eq outcome
         end
 
         it "should allow an 'Instructor' and a 'Student' to be added to the Lecture" do
             lecture = Lecture.new(:instructor_id => @ins_1[:id], :student_id => @st_1[:id], :active => true)
-            valid_lecture? lecture
+            valid_lecture? lecture, true
         end
-        it "should allow an 'Instructor' and another 'Instructor' to be added to the Lecture" do
+        it "should not allow an 'Instructor' and another 'Instructor' to be added to the Lecture" do
             lecture = Lecture.new(:instructor_id => @ins_1[:id], :student_id => @ins_2[:id], :active => true)
-            valid_lecture? lecture
+            valid_lecture? lecture, false
         end
         it "should allow an 'Instructor' to add multiple 'Student's to the Lecture" do
             lecture_first = Lecture.new(:instructor_id => @ins_1[:id], :student_id => @st_1[:id], :active => true)
-            valid_lecture? lecture_first
+            valid_lecture? lecture_first, true
             lecture_second = Lecture.new(:instructor_id => @ins_1[:id], :student_id => @st_2[:id], :active => true)
-            valid_lecture? lecture_second
+            valid_lecture? lecture_second, true
         end
     end
 
@@ -42,7 +63,7 @@ RSpec.describe Lecture, :type => :model do
         end
 
         def valid_active? active, error_message
-            lecture = Lecture.new(:active => active)
+            lecture = Lecture.new(:instructor_id => @ins_1[:id], :student_id => @st_1[:id], :active => active)
             expect( lecture.valid? ).to eq false
             expect( lecture.errors.messages[:active] ).to include error_message
         end
@@ -57,8 +78,8 @@ RSpec.describe Lecture, :type => :model do
             valid_active? active, @not_in_list
             # In the list
             active = true
-            lecture = Lecture.new(:active => active)
-            expect( lecture.valid? ).to eq false
+            lecture = Lecture.new(:instructor_id => @ins_1[:id], :student_id => @st_1[:id], :active => active)
+            expect( lecture.valid? ).to eq true
             expect( lecture.errors.messages[:active] ).to be_empty
         end
     end

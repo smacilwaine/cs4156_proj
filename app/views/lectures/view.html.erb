@@ -21,15 +21,17 @@
 	$( document ).on('turbolinks:load', function() {
   		callFrame = window.DailyIframe.createFrame({
 		 iframeStyle: {
-		    position: 'fixed',
+		    position: 'relative',
 		    border: '1px solid black',
-		    width: '1200px',
-		    height: '550px',
+		    width: '80%',
+		    height: '600px',
 		    right: '1em',
-		    bottom: '1em'
+		    bottom: '1em',
+		    margin: '400px 0px 0px 200px'
 		 },
-	});
-	callFrame.join({ url: '<%= @chat_url %>' })	
+		 showLeaveButton: true,
+		 });
+	callFrame.join({ url: '<%= @chat_url %>'})
 	})
 </script>
 

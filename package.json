@@ -1,5 +1,4 @@
 {
   "name": "music_project",
-  "private": true,
-  "dependencies": {}
+  "private": true
 }

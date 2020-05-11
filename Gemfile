@@ -75,3 +75,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #adding launchy
 gem 'launchy', '2.4.3'
+
+# CSS
+gem 'bootstrap'
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'tether-rails'

@@ -17,10 +17,16 @@
 	<%end%>
 <% end %>
 
-<% @invited_lectures.each do |lec|%>
-	<div style="padding-top: 20px; font-family: 'Trebuchet MS', 'Helvetica', 'sans-serif'; font-size: 30px">
-		Invitation from <strong><%= lec["instructor"] %></strong> created on <strong><%= lec["created_at"].strftime("%m/%d/%y: %H:%M %Z") %></strong> 
-		<%= link_to "Join Lecture", :action => 'view', :lec_id => lec["lec_id"] %>
+<% if @invited_lectures.length > 0 %>
+	<% @invited_lectures.each do |lec|%>
+		<div style="padding-top: 20px; font-family: 'Trebuchet MS', 'Helvetica', 'sans-serif'; font-size: 30px">
+			Invitation from <strong><%= lec["instructor"] %></strong> created on <strong><%= lec["created_at"].strftime("%m/%d/%y: %H:%M %Z") %></strong> 
+			<%= link_to "Join Lecture", :action => 'view', :lec_id => lec["lec_id"] %>
+		</div>
+	<% end %>
+<% else %>
+	<div style="padding-top: 20px; font-family: 'Trebuchet MS', 'Helvetica', 'sans-serif'; font-size: 25px">
+		You have no active lecture invitations.
 	</div>
 <% end %>
 

@@ -13,13 +13,16 @@
     <div class=" h-100 d-flex justify-content-center align-items-center">
       <div>
         <% if flash[:error] -%>
-          <p class='error'><%=h flash[:error] %></p>
+          <div class="alert alert-danger" role="alert"><%=h flash[:error] %></div>
+        <% end -%>
+        <% if flash[:warning] -%>
+          <div class="alert alert-warning" role="alert"><%=h flash[:warning] %></div>
         <% end -%>
         <% if flash[:notice] -%>
-          <p class='notice'><%=h flash[:notice] %></p>
+          <div class="alert alert-info" role="alert"><%=h flash[:notice] %></div>
         <% end -%>
         <%= yield %>
       </div>
     </div>
   </body>
-</html>
+</html>q

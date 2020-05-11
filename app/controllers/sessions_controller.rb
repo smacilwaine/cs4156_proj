@@ -13,15 +13,17 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      flash[:notice] = "User logged in successfully."
       redirect_to user_index_path
     else
+      flash[:error] = "User could not login successfully."
       redirect_to new_session_path
     end
   end
 
   def destroy
-    flash[:notice] = "User logged out successfully."
     reset_session
+    flash[:notice] = "User logged out successfully."
     redirect_to root_path
   end
 

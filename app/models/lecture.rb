@@ -19,5 +19,6 @@ class Lecture < ApplicationRecord
 
     # Validation
     # Active
-    validates :active, :presence => true, :inclusion => [ true, false ]
+    #validates :active, :presence => true, :inclusion => [ true, false ]
+    validates :active, :inclusion => [ true, false ]
 end

@@ -7,6 +7,12 @@
     <%= f.text_field :student%><br>
 
     <%= f.submit "Start" %>
+
+    <% flash.each do |type, msg| %>
+	  <div>
+	    <%= msg %>
+	  </div>
+	<% end %>
 <%end%>
 
 </div>

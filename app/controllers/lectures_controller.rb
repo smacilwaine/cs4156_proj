@@ -4,21 +4,18 @@ class LecturesController < ApplicationController
   end
 
   def create
-    @lecture = Lecture.create(params.require(:lecture).permit(:student))
-    @lecture.instructor = current_user
-    @lecture.lec_id = @@current_lec_id
-    @lecture.active = true
-    @@current_lec_id+=1
+    @lecture = Lecture.new
+    invited_student = User.find_by(username: params[:lecture][:student])
+    if invited_student == nil
+      flash[:warning] = "Invalid Student"
+      redirect_to new_lecture_path
+      return
+    end
+    @lecture.student_id = invited_student.id
+    @lecture.instructor_id = current_user.id
+    @lecture.active = true 
     @lecture.save
-    ####debugging_code#####
-    #selected_lecture = Lecture.find_by(lec_id: @lecture.lec_id)
-    #if selected_lecture == nil
-    #    puts "selected lecture is nil"
-    #else
-    #    puts "selected lecture has id", selected_lecture.lec_id
-    #end
-    ######################
-    redirect_to :action => "view", :lec_id => @lecture.lec_id #needs to be changed. use randomly generated lec_id. go to teach first
+    redirect_to :action => "view", :lec_id => @lecture.id
   end
 
   def view
@@ -29,10 +26,17 @@ class LecturesController < ApplicationController
 
   def validate_join
     lec_id = params[:lecture][:lec_id]
-    selected_lecture = Lecture.find_by(lec_id: lec_id)
+    selected_lecture = Lecture.find_by(id: lec_id)
     
-    if (selected_lecture == nil) or !(selected_lecture.active) or (selected_lecture.student != current_user.username)
-        redirect_to no_access_path
+    if (selected_lecture == nil) 
+      flash[:warning] = "Lecture does not exist"
+      redirect_to join_path
+    elsif !(selected_lecture.active) 
+      flash[:warning] = "This lecture has ended"
+      redirect_to join_path
+    elsif (selected_lecture.student_id != current_user.id)
+      flash[:warning] = "You do not have access to this lecture"
+      redirect_to join_path
     else    
         redirect_to :action => "view", :lec_id => lec_id  
     end
@@ -46,20 +50,17 @@ class LecturesController < ApplicationController
 
   def terminate
     lec_id = params[:lec_id]
-    selected_lecture = Lecture.find_by(lec_id: lec_id)
+    selected_lecture = Lecture.find_by(id: lec_id)
     #puts "lec_id", lec_id
     #if selected_lecture == nil
     #    "selected_lecture is nil"
     #end
     selected_lecture.active = false
-    selected_lecture.save
+    selected_lecture.save!
     redirect_to user_index_path
   end
 
   def no_access
   end
 
-  private
-
-  @@current_lec_id = 0
 end

@@ -5,4 +5,11 @@
     <%= f.text_field :lec_id%><br>
 
     <%= f.submit "Start" %>
+
+    <% flash.each do |type, msg| %>
+	  <div>
+	    <%= msg %>
+	  </div>
+	<% end %>
+	
 <%end%>

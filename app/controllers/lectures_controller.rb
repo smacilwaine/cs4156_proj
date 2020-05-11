@@ -1,3 +1,8 @@
+require 'uri'
+require 'net/http'
+require 'openssl'
+require 'json'
+
 class LecturesController < ApplicationController
   def new
     @lecture = Lecture.new
@@ -14,11 +19,31 @@ class LecturesController < ApplicationController
     @lecture.student_id = invited_student.id
     @lecture.instructor_id = current_user.id
     @lecture.active = true 
+    
+
+    ##creating a room ##
+    url = URI("https://api.daily.co/v1/rooms")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Post.new(url)
+    request["content-type"] = 'application/json'
+    request["authorization"] = 'Bearer ' + api_key
+
+    response = http.request(request)
+    ##########
+    result = JSON.parse(response.body)
+    @lecture.chat_url = result["url"] 
     @lecture.save
     redirect_to :action => "view", :lec_id => @lecture.id
+    return
   end
 
   def view
+    current_lecture = Lecture.find_by(id: params[:lec_id])
+    @chat_url = current_lecture.chat_url
   end
 
   def join

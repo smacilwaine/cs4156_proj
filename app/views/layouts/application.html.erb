@@ -10,12 +10,16 @@
   </head>
 
   <body>
-    <% if flash[:error] -%>
-      <p class='error'><%=h flash[:error] %></p>
-    <% end -%>
-    <% if flash[:notice] -%>
-      <p class='notice'><%=h flash[:notice] %></p>
-    <% end -%>
-    <%= yield %>
+    <div class=" h-100 d-flex justify-content-center align-items-center">
+      <div>
+        <% if flash[:error] -%>
+          <p class='error'><%=h flash[:error] %></p>
+        <% end -%>
+        <% if flash[:notice] -%>
+          <p class='notice'><%=h flash[:notice] %></p>
+        <% end -%>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

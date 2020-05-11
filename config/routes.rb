@@ -3,13 +3,11 @@ Rails.application.routes.draw do
 
   resources :user, only: [:new, :create, :index]
 
-  resources :lectures, only: [:new, :create]
-
   resource :session, only: [:new, :create, :index, :destroy]
 
   root 'sessions#index'
 
-  # Replaced sessions
+  # Replaced old sessions routes by canonical routes
   # root 'sessions#welcome'
   # get 'login', to: 'sessions#new'
   # post 'login', to: 'sessions#create'
@@ -23,6 +21,8 @@ Rails.application.routes.draw do
   # Replaced newlecture by :new route in resources :lectures
   # get 'newlecture', to: 'lectures#new'
   # post 'newlecture', to: 'lectures#create'
+
+  resources :lectures, only: [:new, :create]
 
   get 'view/:lec_id', to: 'lectures#view'
 

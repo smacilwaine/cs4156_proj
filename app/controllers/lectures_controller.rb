@@ -47,6 +47,13 @@ class LecturesController < ApplicationController
   end
 
   def join
+    @invited_lectures = []
+    student_lectures = Lecture.where(student_id: current_user.id, active: true)
+    student_lectures.each do |lec|
+      instructor = User.find_by(id: lec.instructor_id)
+      @invited_lectures.append({"lec_id" => lec.id, "instructor" => instructor.username, "created_at" => lec.created_at})
+    end
+    puts @invited_lectures
   end
 
   def validate_join

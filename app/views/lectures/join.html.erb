@@ -1,15 +1,29 @@
-<h1>Join Lecture</h1>
+<h1 style="padding-top: 70px; font-weight: bold; font-family: 'Trebuchet MS', 'Helvetica', 'sans-serif';">Your Lecture Invitations</h1>
 
-<%= form_with scope: :lecture, url: url_for(:action => 'validate_join')  do |f| %>
-    <%= f.label :lec_id%><br>
-    <%= f.text_field :lec_id%><br>
+<% if false %>
+	<%= form_with scope: :lecture, url: url_for(:action => 'validate_join')  do |f| %>
+	    <%= f.label :lec_id%><br>
+	    <%= f.text_field :lec_id%><br>
 
-    <%= f.submit "Start" %>
+	    <%= f.submit "Start" %>
 
-    <% flash.each do |type, msg| %>
-	  <div>
-	    <%= msg %>
-	  </div>
-	<% end %>
-	
-<%end%>
+
+	    <% flash.each do |type, msg| %>
+		  <div>
+		    <%= msg %>
+		  </div>
+		<% end %>
+
+	<%end%>
+<% end %>
+
+<% @invited_lectures.each do |lec|%>
+	<div style="padding-top: 20px; font-family: 'Trebuchet MS', 'Helvetica', 'sans-serif'; font-size: 30px">
+		Invitation from <strong><%= lec["instructor"] %></strong> created on <strong><%= lec["created_at"].strftime("%m/%d/%y: %H:%M %Z") %></strong> 
+		<%= link_to "Join Lecture", :action => 'view', :lec_id => lec["lec_id"] %>
+	</div>
+<% end %>
+
+<div style="padding-top: 50px; font-size: 30px;">
+	<%= button_to "Go to Dashboard", user_index_path, method: :get%>
+</div>

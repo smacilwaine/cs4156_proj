@@ -2,7 +2,7 @@
 
 <h1 class="welcome" style="margin-bottom: 30px; padding-top: 150px;">Sign Up</h1>
 
-<%= form_with scope: :user, url: user_index_path do |f| %>
+<%= form_with scope: :user, url: user_index_path, method: :post do |f| %>
     <%= f.label :username%><br>
     <%= f.text_field :username%><br>
     <%= f.label :email%><br>

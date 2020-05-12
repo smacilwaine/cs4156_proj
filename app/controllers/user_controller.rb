@@ -13,7 +13,14 @@ class UserController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_index_path
     else
-      flash[:error] = "User creation unsuccessful, invalid form data."
+      flash[:error] = ""
+      @user.errors.messages.each_pair {
+        |k, v|
+        v.each {
+          |v|
+          flash[:error] << "#{k} : #{v}. "
+        }
+      }
       redirect_to new_user_path
     end
   end

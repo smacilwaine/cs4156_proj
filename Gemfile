@@ -81,3 +81,6 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
+
+#carrierwave
+gem 'carrierwave', '~> 0.9'

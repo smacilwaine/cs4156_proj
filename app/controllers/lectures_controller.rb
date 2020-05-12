@@ -10,6 +10,14 @@ class LecturesController < ApplicationController
 
   def create
     @lecture = Lecture.new
+    uploaded_sheet = Sheet.find_by(name: params[:lecture][:sheet_name])
+    if uploaded_sheet == nil
+      flash[:warning] = "No sheet named #{params[:lecture][:sheet_name]} has been uploaded."
+      redirect_to new_lecture_path
+      return
+    end
+    @lecture.sheet_id = uploaded_sheet.id
+    
     invited_student = User.find_by(username: params[:lecture][:student])
     if invited_student == nil
       flash[:warning] = "Invalid Student"
@@ -44,6 +52,8 @@ class LecturesController < ApplicationController
   def view
     current_lecture = Lecture.find_by(id: params[:lec_id])
     @chat_url = current_lecture.chat_url
+    sheet_music = Sheet.find_by(id: current_lecture.sheet_id)
+    @sheet_music_path = sheet_music.attachment_url
   end
 
   def join

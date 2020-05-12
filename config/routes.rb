@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :user, only: [:new, :create, :index]
 
   resource :session, only: [:new, :create, :index, :destroy]
+   
+  resources :sheets, only: [:index, :new, :create, :destroy]
 
   root 'sessions#index'
 

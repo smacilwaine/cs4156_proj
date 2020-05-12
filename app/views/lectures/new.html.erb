@@ -1,18 +1,15 @@
 <div class="welcome_div">
 
-<h1 class="welcome">New Lecture</h1>
+<h1 class="welcome">Start New Lecture</h1>
+
+<%= link_to "Upload Sheet Music For Lecture", new_sheet_path, class: "btn btn-primary", style: "margin-top:30px; margin-bottom:30px;" %>
 
 <%= form_with scope: :lecture, url: lectures_path do |f| %>
-    <%= f.label :student%><br>
+    <%= f.label "Student's Username"%><br>
     <%= f.text_field :student%><br>
-
-    <%= f.submit "Start" %>
-
-    <% flash.each do |type, msg| %>
-	  <div>
-	    <%= msg %>
-	  </div>
-	<% end %>
+    <%= f.label "Name of Uploaded Sheet"%><br>
+    <%= f.text_field :sheet_name%><br>
+    <%= f.submit "Start", class: "btn btn-primary", style: "margin-top:20px;" %>
 <%end%>
 
 </div>

@@ -1,6 +1,6 @@
 <div class="welcome_div" style="height: 1000px">
 
-<h1 class="welcome" style="margin-bottom: 30px">Sign Up</h1>
+<h1 class="welcome" style="margin-bottom: 30px; padding-top: 150px;">Sign Up</h1>
 
 <%= form_with scope: :user, url: user_index_path do |f| %>
     <%= f.label :username%><br>
@@ -16,7 +16,7 @@
     <%= f.label :role%><br>
     <%= f.select :role, ['Instructor', 'Student'] %><br><br>
 
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
 <%end%>
 
 </div>

@@ -6,7 +6,7 @@
     <h1 class="greeting">Viewing as Instructor</h1>
     
     <%= form_with scope: :lecture, url: url_for(:action => 'terminate', :lec_id => params[:lec_id]), method: "post" do %>
-        <%= submit_tag 'End Lecture' %>
+        <%= submit_tag 'End Lecture', class:"btn btn-secondary", style:"margin-bottom: 10px;"%>
     <%end%>
 
 <%end%>
@@ -15,7 +15,7 @@
     <h1 class="greeting">Viewing as Student</h1>
 <%end%>
 
-<%= button_to "Go to Dashboard", user_index_path, method: :get%>
+<%= button_to "Go to Dashboard", user_index_path, method: :get, class:"btn btn-primary", style:"margin-bottom: 10px;" %>
 <%= link_to "Start Video", "", { :onclick => "history.go(0)" }%>
 
 <div>

@@ -5,20 +5,20 @@
 <% if is_student? %>
     <h1 class="subtitle">Student Mode</h1> 
     <span style="font-size: 30px">
-    <%= button_to "Join Lecture", join_path, method: :get%>
+    <%= button_to "Join Lecture", join_path, method: :get, class:"btn btn-primary", style:"margin-bottom: 10px;" %>
     </span>
 <%end%>
 
 <% if is_instructor? %>
     <h1 class="subtitle">Instructor Mode</h1>
     <br>
-    <span style="font-size: 30px">
-    <%= button_to "Start Lecture", new_lecture_path, method: :get%>
+    <span style="font-size: 30px;">
+    <%= button_to "Start Lecture", new_lecture_path, method: :get, class:"btn btn-primary", style:"margin-bottom: 10px;" %>
     </span>
 <%end%>
 
 <span style="padding-top: 10px; font-size: 30px;">
-<%= button_to "Logout", session_path, method: :delete%>
+<%= button_to "Logout", session_path, method: :delete, class:"btn btn-secondary"%>
 <span>
 
 </div>

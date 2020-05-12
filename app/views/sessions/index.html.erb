@@ -1,12 +1,12 @@
 <div class="welcome_div">
 
-<h1 class="welcome" style="margin-bottom: 30px">Welcome</h1>
+<h1 class="welcome" style="margin-bottom: 30px; padding-top: 50px;">Welcome to Lezzon</h1>
 
 <% if logged_in? %>
     <h1 class="greeting"><%= current_user.username %></h1>
 <% end %>
 
-<%= button_to "Login", new_session_path, method: :get %>
-<%= button_to "Sign Up", new_user_path, method: :get %>
+<%= button_to "Login", new_session_path, method: :get, class: "btn btn-primary", style: "margin-bottom: 20px;"%>
+<%= button_to "Sign Up", new_user_path, method: :get, class: "btn btn-secondary" %>
 
 </div>

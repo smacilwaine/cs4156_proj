@@ -44,9 +44,13 @@ class LecturesController < ApplicationController
     ##########
     result = JSON.parse(response.body)
     @lecture.chat_url = result["url"] 
-    @lecture.save
-    redirect_to :action => "view", :lec_id => @lecture.id
-    return
+    if @lecture.save
+      redirect_to :action => "view", :lec_id => @lecture.id
+      return
+    else
+      flash[:warning] = "Unable to create lecture"
+      redirect_to new_lecture_path
+    end
   end
 
   def view
@@ -63,7 +67,6 @@ class LecturesController < ApplicationController
       instructor = User.find_by(id: lec.instructor_id)
       @invited_lectures.append({"lec_id" => lec.id, "instructor" => instructor.username, "created_at" => lec.created_at})
     end
-    puts @invited_lectures
   end
 
   def validate_join

@@ -83,4 +83,4 @@ gem 'popper_js'
 gem 'tether-rails'
 
 #carrierwave
-gem 'carrierwave', '~> 0.9'
+gem 'carrierwave', '~> 1.3'
